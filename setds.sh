@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 echo " **  Invoking Custom Assemble Script"
 
 # Finds appropriate environment variable
@@ -36,4 +36,3 @@ datasources="$(generate_datasource $jndi $username $password $driver $url)\n\n"
 C=$(echo $datasources | sed 's/\//\\\//g')
 sed -i "/<\/Context>/ s/.*/${C}\n&/" $JWS_HOME/conf/context.xml
 
-/usr/local/s2i/assemble
